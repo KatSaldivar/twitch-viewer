@@ -42,7 +42,6 @@ h2{
 #followerInfo{
   margin-top: 25px;
 }
-
 @media (max-device-width: 768px) {
   p {
     font-size: 25pt;
