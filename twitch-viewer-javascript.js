@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  
+//API DOCUMENTATION
     //ALERTS YOU IF FCC IS ONLINE OR OFFLINE
     $.ajax({
         type:"GET",
-        url:'https://api.twitch.tv/kraken/streams/freecodecamp',
+        url:'https://api.twitch.tv/helix/streams?user_name=freecodecamp',//'https://api.twitch.tv/kraken/streams/freecodecamp',
         headers:{
             "Client-ID": "qpuc13qjuqswojfejuxji37ztrevun"
         },
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 "Client-ID": "qpuc13qjuqswojfejuxji37ztrevun"
             },
             error: function(data3){ 
-                var logo="http://images.cdn2.stockunlimited.net/clipart/delete-user-icon_1654208.jpg";
+                var logo="https://images.cdn2.stockunlimited.net/clipart/delete-user-icon_1654208.jpg";
                 var status=data3.status;
                 var name=data3.statusText;
                 $("#followerInfo").prepend('<div class="row rounded">' + '<div class= "col-md-2">' + '<img src="' + logo + '" style="width:120px;height:120px;">  </div>'  
