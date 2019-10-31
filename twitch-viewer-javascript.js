@@ -16,12 +16,12 @@ $(document).ready(function() {
         }
     });
   
-  // FYI a user that is always streaming is "ESL_SC2"  
+  //  Here's an array of the Twitch.tv usernames of people who regularly stream: ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
 
   //FINDS FCC FOLLOWERS
     $.ajax({
         type:"GET",
-        url:'https://api.twitch.tv/kraken/users/freecodecamp/follows/channels/',
+        url:'GET https://api.twitch.tv/helix/users/follows?from_user_name=freecodecamp',// https://api.twitch.tv/kraken/users/freecodecamp/follows/channels/',
         headers:{
             "Client-ID": "qpuc13qjuqswojfejuxji37ztrevun"
         },
