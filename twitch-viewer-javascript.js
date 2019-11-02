@@ -1,17 +1,30 @@
 $(document).ready(function() {
 //https://codepen.io/miljan-fsd/pen/VmYJZV?editors=0010
-var channels=["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
+var channels=["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
 for (var i=0; i<channels.length; i++){  
 
     $.getJSON("https://wind-bow.gomix.me/twitch-api/channels/" + channels[i] + "?callback=?", function(data) {
         var logo = data.logo;
-        var name=channels[i];
-        var status= "status";
+        var name=data.display_name;
+
+        $.getJSON("https://wind-bow.gomix.me/twitch-api/streams/" + channels[i] + "?callback=?", function(data2) {
+        //status = data2.stream.channels[i].status; //(stream.length > 0) ? "status-online" : "status-offline";
+        var status= "";
+        if(data2.stream===null){
+            status="offline";
+        }else{
+            status="online";
+        } 
 
         $("#followerInfo").prepend('<div class="row rounded">' + '<div class= "col-md-2">' + '<img src="' + logo + '" style="width:120px;height:120px;">  </div>'  
-                    + '<div class= "col-md-8"><h2>' + name + '</h2><p>' +  
-                    + status + '</p></div>' + '</div>'); 
+        + '<div class= "col-md-8"><h2>' + name + '</h2><p>' +  
+        + status + '</p></div>' + '</div>'); 
+        });
     });
+
+    
+
+    
 };
 
 
