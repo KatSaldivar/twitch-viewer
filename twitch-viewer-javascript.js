@@ -1,26 +1,33 @@
 $(document).ready(function() {
 //https://codepen.io/miljan-fsd/pen/VmYJZV?editors=0010
-var channels=["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
+const channels=["OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
 for (var i=0; i<channels.length; i++){  
-
     $.getJSON("https://wind-bow.gomix.me/twitch-api/channels/" + channels[i] + "?callback=?", function(data) {
+        $.getJSON("https://wind-bow.gomix.me/twitch-api/streams/" + channels[i] + "?callback=?", function(data2) {
         var logo = data.logo;
         var name=data.display_name;
-
-        $.getJSON("https://wind-bow.gomix.me/twitch-api/streams/" + channels[i] + "?callback=?", function(data2) {
+        var status;
+        
+        if(data2.type=="live"){
+            status="online";
+        }else{
+            status="offline";
+        } 
         //status = data2.stream.channels[i].status; //(stream.length > 0) ? "status-online" : "status-offline";
-        var status= "";
-        if(data2.stream===null){
+        /*if(data2.stream==null){
             status="offline";
         }else{
             status="online";
-        } 
+        } */
+
+        // = data2.stream;//(data2.stream.channel.status.length > 0) ? "status-online" : "status-offline";
 
         $("#followerInfo").prepend('<div class="row rounded">' + '<div class= "col-md-2">' + '<img src="' + logo + '" style="width:120px;height:120px;">  </div>'  
         + '<div class= "col-md-8"><h2>' + name + '</h2><p>' +  
         + status + '</p></div>' + '</div>'); 
         });
     });
+    //});
 
     
 
