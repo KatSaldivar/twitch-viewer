@@ -2,6 +2,7 @@ body {
   margin-top: 25px;
     background-image: url(https://s-media-cache-ak0.pinimg.com/originals/53/8a/e9/538ae9a1dee98137ef2240e9bebc4263.jpg);
   background-size:100% 100%;
+  font-family: 'Sigmar One';
 }
 .twitchLogo{
   float:left;
